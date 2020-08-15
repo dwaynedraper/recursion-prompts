@@ -80,15 +80,21 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-  // let results = [];
-  // if (arguments[0] === arguments[1]) {
-  //   results.push(arguments[0]);
-  //   return results;
-  // } else {
-  //   results.push(arguments[0]);
-  //   return range(x+1, y)
-  // }
-
+  let reversed = false;
+  if (x > y) {
+    let temp = x;
+    x = y;
+    y = temp;
+    reversed = true
+  }
+  if (x === y || x + 1 === y) return [];
+  let result = range(x, y - 1);
+  result.push(y - 1);
+  if (reversed) {
+    return result.reverse();
+  } else {
+    return result;
+  }
 
 };
 
